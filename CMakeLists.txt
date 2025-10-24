@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.21)
 # manual dependency management
 
 # Only set the cxx_standard if it is not set by someone else
-if (NOT DEFINED CMAKE_CXX_STANDARD)
+if(NOT DEFINED CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 23)
 endif()
 
@@ -25,14 +25,13 @@ project(
 include(cmake/PreventInSourceBuilds.cmake)
 include(ProjectOptions.cmake)
 
+myghostescape_setup_options()
 
-MyGhostEscape_setup_options()
-
-MyGhostEscape_global_options()
+myghostescape_global_options()
 include(Dependencies.cmake)
-MyGhostEscape_setup_dependencies()
+myghostescape_setup_dependencies()
 
-MyGhostEscape_local_options()
+myghostescape_local_options()
 
 # don't know if this should be set globally from here or not...
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
@@ -91,7 +90,7 @@ if(MSVC)
 endif()
 
 # set the startup project for the "play" button in MSVC
-set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT intro)
+set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT GhostEscape)
 
 if(CMAKE_SKIP_INSTALL_RULES)
   return()
@@ -101,9 +100,9 @@ include(cmake/PackageProject.cmake)
 
 # Add other targets that you want installed here, by default we just package the one executable
 # we know we want to ship
-MyGhostEscape_package_project(
+myghostescape_package_project(
   TARGETS
-  intro
+  GhostEscape
   MyGhostEscape_options
   MyGhostEscape_warnings
   # FIXME: this does not work! CK
