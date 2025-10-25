@@ -17,6 +17,7 @@ public:
     }
 
     void init(std::string_view title, int width, int height);
+    void handleEvents();
     void clean();
 
 private:

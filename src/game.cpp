@@ -49,6 +49,20 @@ void Game::init(std::string_view title, int width, int height)
     SDL_SetRenderLogicalPresentation(m_renderer, width, height, SDL_LOGICAL_PRESENTATION_LETTERBOX);
 }
 
+void Game::handleEvents()
+{
+    SDL_Event event;
+    while (SDL_PollEvent(&event)) {
+        switch (event.type) {
+        case SDL_EVENT_QUIT:
+            m_isRunning = false;
+            break;
+        default:
+            break;
+        }
+    }
+}
+
 void Game::clean()
 {
     // 关闭SDL3_TTF
