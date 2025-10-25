@@ -1,4 +1,6 @@
 #include "game.h"
+#include "../scene_main.h"
+#include "scene.h"
 
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
@@ -50,6 +52,10 @@ void Game::init(std::string_view title, int width, int height)
 
     // 计算每帧时间
     m_frameTime = 1'000'000'000 / m_FPS;
+
+    // 创建场景
+    m_currentScene = new SceneMain;
+    m_currentScene->init();
 }
 
 void Game::run()
@@ -68,7 +74,6 @@ void Game::run()
         } else {
             m_deltaTime = frameElapsed / 1.0e9f; // 转换为秒
         }
-        SDL_Log("FPS: %f", 1.0f / m_deltaTime);
     }
 }
 
@@ -81,17 +86,37 @@ void Game::handleEvents()
             m_isRunning = false;
             break;
         default:
+            m_currentScene->handleEvents(event);
             break;
         }
     }
 }
 
-void Game::update(float deltaTime) {}
+void Game::update(float deltaTime)
+{
+    m_currentScene->update(deltaTime);
+}
 
-void Game::render() {}
+void Game::render()
+{
+    // 清除渲染器
+    SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 255);
+    SDL_RenderClear(m_renderer);
+
+    m_currentScene->render();
+
+    // 显示渲染结果
+    SDL_RenderPresent(m_renderer);
+}
 
 void Game::clean()
 {
+    // 清理场景
+    if (m_currentScene) {
+        m_currentScene->clean();
+        delete m_currentScene;
+        m_currentScene = nullptr;
+    }
     // 关闭SDL3_TTF
     TTF_Quit();
     // 关闭SDL3_Mixer

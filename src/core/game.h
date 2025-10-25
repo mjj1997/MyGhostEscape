@@ -5,6 +5,8 @@
 
 #include <string_view>
 
+class Scene;
+
 class Game
 {
 public:
@@ -30,6 +32,7 @@ private:
 
     glm::vec2 m_screenSize{ glm::vec2{ 0.0f } }; // 屏幕尺寸
     bool m_isRunning{ true };
+    Scene* m_currentScene{ nullptr };
 
     Uint64 m_FPS{ 60 };
     Uint64 m_frameTime{ 0 }; // 每帧时间，单位：纳秒
