@@ -47,14 +47,28 @@ void Game::init(std::string_view title, int width, int height)
     }
     // 设置窗口逻辑分辨率
     SDL_SetRenderLogicalPresentation(m_renderer, width, height, SDL_LOGICAL_PRESENTATION_LETTERBOX);
+
+    // 计算每帧时间
+    m_frameTime = 1'000'000'000 / m_FPS;
 }
 
 void Game::run()
 {
     while (m_isRunning) {
+        auto frameStart{ SDL_GetTicksNS() };
         handleEvents();
-        update(0.0f);
+        update(m_deltaTime);
         render();
+        auto frameEnd{ SDL_GetTicksNS() };
+        auto frameElapsed{ frameEnd - frameStart };
+
+        if (frameElapsed < m_frameTime) {
+            SDL_DelayNS(m_frameTime - frameElapsed);
+            m_deltaTime = m_frameTime / 1.0e9f; // 转换为秒
+        } else {
+            m_deltaTime = frameElapsed / 1.0e9f; // 转换为秒
+        }
+        SDL_Log("FPS: %f", 1.0f / m_deltaTime);
     }
 }
 

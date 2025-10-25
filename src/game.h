@@ -31,6 +31,10 @@ private:
     glm::vec2 m_screenSize{ glm::vec2{ 0.0f } }; // 屏幕尺寸
     bool m_isRunning{ true };
 
+    Uint64 m_FPS{ 60 };
+    Uint64 m_frameTime{ 0 }; // 每帧时间，单位：纳秒
+    float m_deltaTime{ 0.0f };
+
     SDL_Window* m_window{ nullptr };
     SDL_Renderer* m_renderer{ nullptr };
 };
