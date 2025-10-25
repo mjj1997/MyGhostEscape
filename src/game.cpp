@@ -49,6 +49,15 @@ void Game::init(std::string_view title, int width, int height)
     SDL_SetRenderLogicalPresentation(m_renderer, width, height, SDL_LOGICAL_PRESENTATION_LETTERBOX);
 }
 
+void Game::run()
+{
+    while (m_isRunning) {
+        handleEvents();
+        update(0.0f);
+        render();
+    }
+}
+
 void Game::handleEvents()
 {
     SDL_Event event;
@@ -62,6 +71,10 @@ void Game::handleEvents()
         }
     }
 }
+
+void Game::update(float deltaTime) {}
+
+void Game::render() {}
 
 void Game::clean()
 {

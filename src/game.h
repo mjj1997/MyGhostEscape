@@ -17,7 +17,10 @@ public:
     }
 
     void init(std::string_view title, int width, int height);
+    void run();
     void handleEvents();
+    void update(float deltaTime);
+    void render();
     void clean();
 
 private:
