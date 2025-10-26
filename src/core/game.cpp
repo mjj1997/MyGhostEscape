@@ -130,3 +130,39 @@ void Game::clean()
     // 退出SDL3
     SDL_Quit();
 }
+
+void Game::drawGrid(const glm::vec2& topLeft,
+                    const glm::vec2& bottomRight,
+                    float gridWidth,
+                    SDL_FColor fColor)
+{
+    // 设置渲染颜色
+    SDL_SetRenderDrawColorFloat(m_renderer, fColor.r, fColor.g, fColor.b, fColor.a);
+    // 绘制垂直网格线
+    for (float x{ topLeft.x }; x <= bottomRight.x; x += gridWidth)
+        SDL_RenderLine(m_renderer, x, topLeft.y, x, bottomRight.y);
+    // 绘制水平网格线
+    for (float y{ topLeft.y }; y <= bottomRight.y; y += gridWidth)
+        SDL_RenderLine(m_renderer, topLeft.x, y, bottomRight.x, y);
+    // 恢复默认渲染颜色
+    SDL_SetRenderDrawColorFloat(m_renderer, 0.0f, 0.0f, 0.0f, 1.0f);
+}
+
+void Game::drawBoundary(const glm::vec2& topLeft,
+                        const glm::vec2& bottomRight,
+                        float boundaryWidth,
+                        SDL_FColor fColor)
+{
+    // 设置渲染颜色
+    SDL_SetRenderDrawColorFloat(m_renderer, fColor.r, fColor.g, fColor.b, fColor.a);
+    // 绘制边界
+    for (float i{ 0 }; i < boundaryWidth; ++i) {
+        SDL_FRect rect{ topLeft.x - i,
+                        topLeft.y - i,
+                        bottomRight.x - topLeft.x + 2 * i,
+                        bottomRight.y - topLeft.y + 2 * i };
+        SDL_RenderRect(m_renderer, &rect);
+    }
+    // 恢复默认渲染颜色
+    SDL_SetRenderDrawColorFloat(m_renderer, 0.0f, 0.0f, 0.0f, 1.0f);
+}

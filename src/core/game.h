@@ -25,6 +25,17 @@ public:
     void render();
     void clean();
 
+    glm::vec2 screenSize() const { return m_screenSize; }
+
+    void drawGrid(const glm::vec2& topLeft,
+                  const glm::vec2& bottomRight,
+                  float gridWidth,
+                  SDL_FColor fColor); // 绘制网格
+    void drawBoundary(const glm::vec2& topLeft,
+                      const glm::vec2& bottomRight,
+                      float boundaryWidth,
+                      SDL_FColor fColor); // 绘制边界
+
 private:
     Game() = default;
     Game(const Game&) = delete;
