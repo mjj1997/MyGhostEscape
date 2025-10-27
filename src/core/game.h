@@ -26,6 +26,7 @@ public:
     void clean();
 
     glm::vec2 screenSize() const { return m_screenSize; }
+    Scene* currentScene() const { return m_currentScene; }
 
     void drawGrid(const glm::vec2& topLeft,
                   const glm::vec2& bottomRight,

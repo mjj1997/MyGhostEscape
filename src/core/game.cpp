@@ -1,6 +1,5 @@
 #include "game.h"
 #include "../scene_main.h"
-#include "scene.h"
 
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
