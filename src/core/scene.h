@@ -20,7 +20,7 @@ public:
     void setWorldSize(const glm::vec2& worldSize) { m_worldSize = worldSize; }
 
     glm::vec2 cameraPosition() const { return m_cameraPosition; }
-    void setCameraPosition(const glm::vec2& cameraPosition) { m_cameraPosition = cameraPosition; }
+    void setCameraPosition(const glm::vec2& cameraPosition);
 
     glm::vec2 world2Screen(const glm::vec2& worldPosition) const
     {

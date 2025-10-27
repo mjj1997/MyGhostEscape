@@ -6,7 +6,8 @@ target_sources(
           core/game.cpp
           scene_main.cpp
           core/object_in_world.cpp
-          player.cpp)
+          player.cpp
+          core/scene.cpp)
 
 target_link_libraries(
   GhostEscape

@@ -12,6 +12,7 @@ void Player::update(float deltaTime)
 {
     keyboardControl();
     move(deltaTime);
+    syncCamera();
 }
 
 void Player::render()
@@ -50,3 +51,7 @@ void Player::move(float deltaTime)
             m_velocity.y);
 }
 
+void Player::syncCamera()
+{
+    m_game.currentScene()->setCameraPosition(m_worldPosition - m_game.screenSize() / 2.0f);
+}

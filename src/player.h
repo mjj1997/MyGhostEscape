@@ -13,4 +13,5 @@ public:
 
     void keyboardControl();
     void move(float deltaTime);
+    void syncCamera();
 };
