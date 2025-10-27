@@ -3,8 +3,8 @@
 
 void SceneMain::init()
 {
-    m_worldSize = m_game.screenSize() * 3.0f; // 世界大小为屏幕大小的3倍
-    m_cameraPosition = glm::vec2{ -100.0f };  // 初始相机位置
+    m_worldSize = m_game.screenSize() * 3.0f;                           // 世界大小为屏幕大小的3倍
+    m_cameraPosition = m_worldSize / 2.0f - m_game.screenSize() / 2.0f; // 初始相机位置
     m_player = new Player;
     m_player->init();
     m_player->setWorldPosition(m_worldSize / 2.0f);
