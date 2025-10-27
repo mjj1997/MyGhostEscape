@@ -11,6 +11,7 @@ void Player::handleEvents(SDL_Event& event) {}
 void Player::update(float deltaTime)
 {
     keyboardControl();
+    move(deltaTime);
 }
 
 void Player::render()
@@ -36,5 +37,16 @@ void Player::keyboardControl()
         m_velocity.x = -m_maxSpeed;
     if (currentKeyStates[SDL_SCANCODE_D])
         m_velocity.x = m_maxSpeed;
+}
+
+void Player::move(float deltaTime)
+{
+    setWorldPosition(m_worldPosition + m_velocity * deltaTime);
+    SDL_Log("deltaTime: %f, position: (%f, %f), velocity: (%f, %f)",
+            deltaTime,
+            m_worldPosition.x,
+            m_worldPosition.y,
+            m_velocity.x,
+            m_velocity.y);
 }
 

@@ -12,4 +12,5 @@ public:
     void clean() override;
 
     void keyboardControl();
+    void move(float deltaTime);
 };
