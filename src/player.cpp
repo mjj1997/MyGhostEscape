@@ -49,6 +49,9 @@ void Player::move(float deltaTime)
             m_worldPosition.y,
             m_velocity.x,
             m_velocity.y);
+    m_worldPosition = glm::clamp(m_worldPosition,
+                                 glm::vec2{ 0.0f },
+                                 m_game.currentScene()->worldSize());
 }
 
 void Player::syncCamera()
