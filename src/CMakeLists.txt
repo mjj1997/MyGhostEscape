@@ -1,6 +1,12 @@
 add_executable(GhostEscape)
 
-target_sources(GhostEscape PRIVATE main.cpp core/game.cpp scene_main.cpp)
+target_sources(
+  GhostEscape
+  PRIVATE main.cpp
+          core/game.cpp
+          scene_main.cpp
+          core/object_in_world.cpp
+          player.cpp)
 
 target_link_libraries(
   GhostEscape
