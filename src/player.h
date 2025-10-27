@@ -10,4 +10,6 @@ public:
     void update(float deltaTime) override;
     void render() override;
     void clean() override;
+
+    void keyboardControl();
 };

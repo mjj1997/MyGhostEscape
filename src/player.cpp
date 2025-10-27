@@ -10,6 +10,7 @@ void Player::handleEvents(SDL_Event& event) {}
 
 void Player::update(float deltaTime)
 {
+    keyboardControl();
 }
 
 void Player::render()
@@ -21,3 +22,19 @@ void Player::render()
 }
 
 void Player::clean() {}
+
+void Player::keyboardControl()
+{
+    m_velocity *= 0.9f; // 惯性
+
+    auto currentKeyStates{ SDL_GetKeyboardState(nullptr) };
+    if (currentKeyStates[SDL_SCANCODE_W])
+        m_velocity.y = -m_maxSpeed;
+    if (currentKeyStates[SDL_SCANCODE_S])
+        m_velocity.y = m_maxSpeed;
+    if (currentKeyStates[SDL_SCANCODE_A])
+        m_velocity.x = -m_maxSpeed;
+    if (currentKeyStates[SDL_SCANCODE_D])
+        m_velocity.x = m_maxSpeed;
+}
+
