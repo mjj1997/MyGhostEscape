@@ -1,6 +1,12 @@
 #include "object_in_world.h"
 #include "scene.h"
 
+void ObjectInWorld::update(float deltaTime)
+{
+    // ObjectInScreen::update(deltaTime);
+    m_screenPosition = m_game.currentScene()->world2Screen(m_worldPosition);
+}
+
 void ObjectInWorld::setScreenPosition(const glm::vec2& position)
 {
     m_screenPosition = position;
