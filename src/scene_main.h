@@ -2,6 +2,8 @@
 
 #include "core/scene.h"
 
+class Player;
+
 class SceneMain : public Scene
 {
 public:
@@ -17,5 +19,5 @@ public:
 private:
     void renderBackground();
 
-    glm::vec2 m_worldSize{ glm::vec2{ 0.0f } }; // 世界大小
+    Player* m_player{ nullptr };
 };
