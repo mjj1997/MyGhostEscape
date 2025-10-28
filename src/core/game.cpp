@@ -52,6 +52,9 @@ void Game::init(std::string_view title, int width, int height)
     // 计算每帧时间
     m_frameTime = 1'000'000'000 / m_FPS;
 
+    // 创建资产存储
+    m_assetStorage = new AssetStorage{ m_renderer };
+
     // 创建场景
     m_currentScene = new SceneMain;
     m_currentScene->init();
@@ -115,6 +118,12 @@ void Game::clean()
         m_currentScene->clean();
         delete m_currentScene;
         m_currentScene = nullptr;
+    }
+    // 清理资产存储
+    if (m_assetStorage) {
+        m_assetStorage->clean();
+        delete m_assetStorage;
+        m_assetStorage = nullptr;
     }
     // 关闭SDL3_TTF
     TTF_Quit();

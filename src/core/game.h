@@ -1,5 +1,7 @@
 #pragma once
 
+#include "asset_storage.h"
+
 #include <SDL3/SDL.h>
 #include <glm/glm.hpp>
 
@@ -27,6 +29,7 @@ public:
 
     glm::vec2 screenSize() const { return m_screenSize; }
     Scene* currentScene() const { return m_currentScene; }
+    AssetStorage* assetStorage() const { return m_assetStorage; }
 
     void drawGrid(const glm::vec2& topLeft,
                   const glm::vec2& bottomRight,
@@ -42,6 +45,7 @@ private:
     Game(const Game&) = delete;
     Game& operator=(const Game&) = delete;
 
+    AssetStorage* m_assetStorage{ nullptr };
     glm::vec2 m_screenSize{ glm::vec2{ 0.0f } }; // 屏幕尺寸
     bool m_isRunning{ true };
     Scene* m_currentScene{ nullptr };
