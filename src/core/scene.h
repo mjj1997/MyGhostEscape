@@ -1,6 +1,6 @@
 #pragma once
 
-#include "object.h"
+#include "object_in_world.h"
 
 #include <vector>
 
@@ -34,5 +34,7 @@ public:
 protected:
     glm::vec2 m_worldSize{ glm::vec2{ 0.0f } }; // 世界大小
     glm::vec2 m_cameraPosition{ glm::vec2{ 0.0f } };
-    std::vector<Object*> m_objects;
+
+    std::vector<ObjectInWorld*> m_childrenInWorld;
+    std::vector<ObjectInScreen*> m_childrenInScreen;
 };
