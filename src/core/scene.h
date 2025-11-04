@@ -11,10 +11,10 @@ public:
     virtual ~Scene() override = default;
 
     virtual void init() override = 0;
-    virtual void handleEvents(SDL_Event& event) override = 0;
-    virtual void update(float deltaTime) override = 0;
-    virtual void render() override = 0;
-    virtual void clean() override = 0;
+    virtual void handleEvents(SDL_Event& event) override;
+    virtual void update(float deltaTime) override;
+    virtual void render() override;
+    virtual void clean() override;
 
     virtual void addChild(Object* child) override;
     virtual void removeChild(Object* child) override;
