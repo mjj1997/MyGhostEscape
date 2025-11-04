@@ -5,6 +5,8 @@
 class ObjectInScreen : public Object
 {
 public:
+    virtual void init() override { m_type = ObjectType::Screen; }
+
     glm::vec2 screenPosition() const { return m_screenPosition; };
     virtual void setScreenPosition(const glm::vec2& position) { m_screenPosition = position; };
 
