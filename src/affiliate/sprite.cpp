@@ -15,7 +15,7 @@ void Sprite::render()
         return;
 
     auto pos{ m_parent->screenPosition() + m_offset };
-    m_game.renderTexture(m_texture, pos, m_size);
+    m_game.renderTexture(m_texture, pos, m_size); // 使得渲染操作同 Sprite 类解耦
 }
 
 void Sprite::setTexture(const Texture& texture)
