@@ -12,10 +12,10 @@ public:
     virtual ~Object() = default;
 
     virtual void init() = 0;
-    virtual void handleEvents(SDL_Event& event) = 0;
-    virtual void update(float deltaTime) = 0;
-    virtual void render() = 0;
-    virtual void clean() = 0;
+    virtual void handleEvents(SDL_Event& event);
+    virtual void update(float deltaTime);
+    virtual void render();
+    virtual void clean();
 
     virtual void addChild(Object* child) { m_children.push_back(child); }
     virtual void removeChild(Object* child)
