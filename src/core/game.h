@@ -7,6 +7,8 @@
 
 #include <string_view>
 
+struct Texture;
+
 class Scene;
 
 class Game
@@ -30,6 +32,8 @@ public:
     glm::vec2 screenSize() const { return m_screenSize; }
     Scene* currentScene() const { return m_currentScene; }
     AssetStorage* assetStorage() const { return m_assetStorage; }
+
+    void renderTexture(const Texture& texture, const glm::vec2& position, const glm::vec2& size);
 
     void drawGrid(const glm::vec2& topLeft,
                   const glm::vec2& bottomRight,
