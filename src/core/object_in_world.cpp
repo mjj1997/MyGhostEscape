@@ -3,7 +3,7 @@
 
 void ObjectInWorld::update(float deltaTime)
 {
-    // ObjectInScreen::update(deltaTime);
+    ObjectInScreen::update(deltaTime);
     m_screenPosition = m_game.currentScene()->world2Screen(m_worldPosition);
 }
 
