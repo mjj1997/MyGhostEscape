@@ -16,6 +16,9 @@ public:
     virtual void render() override = 0;
     virtual void clean() override = 0;
 
+    virtual void addChild(Object* child) override;
+    virtual void removeChild(Object* child) override;
+
     glm::vec2 worldSize() const { return m_worldSize; }
     void setWorldSize(const glm::vec2& worldSize) { m_worldSize = worldSize; }
 
