@@ -1,6 +1,6 @@
 #pragma once
 
-#include "object.h"
+#include "object_in_world.h"
 
 #include <vector>
 
@@ -11,10 +11,13 @@ public:
     virtual ~Scene() override = default;
 
     virtual void init() override = 0;
-    virtual void handleEvents(SDL_Event& event) override = 0;
-    virtual void update(float deltaTime) override = 0;
-    virtual void render() override = 0;
-    virtual void clean() override = 0;
+    virtual void handleEvents(SDL_Event& event) override;
+    virtual void update(float deltaTime) override;
+    virtual void render() override;
+    virtual void clean() override;
+
+    virtual void addChild(Object* child) override;
+    virtual void removeChild(Object* child) override;
 
     glm::vec2 worldSize() const { return m_worldSize; }
     void setWorldSize(const glm::vec2& worldSize) { m_worldSize = worldSize; }
@@ -34,5 +37,7 @@ public:
 protected:
     glm::vec2 m_worldSize{ glm::vec2{ 0.0f } }; // 世界大小
     glm::vec2 m_cameraPosition{ glm::vec2{ 0.0f } };
-    std::vector<Object*> m_objects;
+
+    std::vector<ObjectInWorld*> m_childrenInWorld;
+    std::vector<ObjectInScreen*> m_childrenInScreen;
 };

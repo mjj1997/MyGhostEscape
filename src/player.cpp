@@ -3,13 +3,18 @@
 
 void Player::init()
 {
+    Actor::init();
     setMaxSpeed(500.0f);
 }
 
-void Player::handleEvents(SDL_Event& event) {}
+void Player::handleEvents(SDL_Event& event)
+{
+    Actor::handleEvents(event);
+}
 
 void Player::update(float deltaTime)
 {
+    Actor::update(deltaTime);
     keyboardControl();
     move(deltaTime);
     syncCamera();
@@ -17,13 +22,17 @@ void Player::update(float deltaTime)
 
 void Player::render()
 {
+    Actor::render();
     m_game.drawBoundary(m_screenPosition,
                         m_screenPosition + glm::vec2{ 20.0f },
                         5.0f,
                         SDL_FColor{ 1.0f, 0.0f, 0.0f, 1.0f });
 }
 
-void Player::clean() {}
+void Player::clean()
+{
+    Actor::clean();
+}
 
 void Player::keyboardControl()
 {
@@ -43,12 +52,6 @@ void Player::keyboardControl()
 void Player::move(float deltaTime)
 {
     setWorldPosition(m_worldPosition + m_velocity * deltaTime);
-    SDL_Log("deltaTime: %f, position: (%f, %f), velocity: (%f, %f)",
-            deltaTime,
-            m_worldPosition.x,
-            m_worldPosition.y,
-            m_velocity.x,
-            m_velocity.y);
     m_worldPosition = glm::clamp(m_worldPosition,
                                  glm::vec2{ 0.0f },
                                  m_game.currentScene()->worldSize());

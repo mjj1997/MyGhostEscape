@@ -5,6 +5,7 @@
 class ObjectInWorld : public ObjectInScreen
 {
 public:
+    virtual void init() override { m_type = ObjectType::World; }
     virtual void update(float deltaTime) override;
 
     void setScreenPosition(const glm::vec2& position) override;
