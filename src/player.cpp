@@ -30,10 +30,6 @@ void Player::update(float deltaTime)
 void Player::render()
 {
     Actor::render();
-    m_game.drawBoundary(m_screenPosition,
-                        m_screenPosition + glm::vec2{ 20.0f },
-                        5.0f,
-                        SDL_FColor{ 1.0f, 0.0f, 0.0f, 1.0f });
 }
 
 void Player::clean()
