@@ -24,7 +24,7 @@ public:
     virtual void render() override;
 
     Texture texture() const { return m_texture; }
-    void setTexture(const Texture& texture);
+    virtual void setTexture(const Texture& texture);
 
 protected:
     Texture m_texture;

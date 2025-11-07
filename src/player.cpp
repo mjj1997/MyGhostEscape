@@ -1,5 +1,5 @@
 #include "player.h"
-#include "affiliate/sprite.h"
+#include "affiliate/sprite_anime.h"
 #include "core/scene.h"
 
 void Player::init()
@@ -8,10 +8,10 @@ void Player::init()
 
     setMaxSpeed(500.0f);
 
-    auto sprite{ new Sprite };
-    sprite->setTexture(Texture{ "assets/sprite/ghost-idle.png" });
-    sprite->setParent(this);
-    addChild(sprite);
+    auto spriteAnime{ new SpriteAnime };
+    spriteAnime->setTexture(Texture{ "assets/sprite/ghost-idle.png" });
+    spriteAnime->setParent(this);
+    addChild(spriteAnime);
 }
 
 void Player::handleEvents(SDL_Event& event)
