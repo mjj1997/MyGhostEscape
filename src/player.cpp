@@ -11,6 +11,7 @@ void Player::init()
     auto spriteAnime{ new SpriteAnime };
     spriteAnime->setTexture(Texture{ "assets/sprite/ghost-idle.png" });
     spriteAnime->setParent(this);
+    spriteAnime->scaleSize(2.0f);
     addChild(spriteAnime);
 }
 

@@ -23,6 +23,8 @@ public:
     virtual void init() override {};
     virtual void render() override;
 
+    void scaleSize(float scale) { m_size *= scale; }
+
     Texture texture() const { return m_texture; }
     virtual void setTexture(const Texture& texture);
 
