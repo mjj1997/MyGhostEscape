@@ -18,7 +18,9 @@ struct Texture
 class Sprite : public ObjectAffiliated
 {
 public:
-    Sprite() = default;
+    static Sprite* addSpriteChild(ObjectInScreen* parent,
+                                  std::string_view filePath,
+                                  float scale = 1.0f);
 
     virtual void init() override {};
     virtual void render() override;
