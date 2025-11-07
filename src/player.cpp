@@ -1,10 +1,17 @@
 #include "player.h"
+#include "affiliate/sprite.h"
 #include "core/scene.h"
 
 void Player::init()
 {
     Actor::init();
+
     setMaxSpeed(500.0f);
+
+    auto sprite{ new Sprite };
+    sprite->setTexture(Texture{ "assets/sprite/ghost-idle.png" });
+    sprite->setParent(this);
+    addChild(sprite);
 }
 
 void Player::handleEvents(SDL_Event& event)

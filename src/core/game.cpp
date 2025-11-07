@@ -1,4 +1,5 @@
 #include "game.h"
+#include "../affiliate/sprite.h"
 #include "../scene_main.h"
 
 #include <SDL3/SDL.h>
@@ -137,6 +138,18 @@ void Game::clean()
         SDL_DestroyWindow(m_window);
     // 退出SDL3
     SDL_Quit();
+}
+
+void Game::renderTexture(const Texture& texture, const glm::vec2& position, const glm::vec2& size)
+{
+    SDL_FRect dstRect{ position.x, position.y, size.x, size.y };
+    SDL_RenderTextureRotated(m_renderer,
+                             texture.texture,
+                             &texture.srcRect,
+                             &dstRect,
+                             texture.angle,
+                             nullptr,
+                             texture.isFlipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 }
 
 void Game::drawGrid(const glm::vec2& topLeft,
