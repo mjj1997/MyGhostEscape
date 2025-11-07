@@ -8,11 +8,7 @@ void Player::init()
 
     setMaxSpeed(500.0f);
 
-    auto spriteAnime{ new SpriteAnime };
-    spriteAnime->setTexture(Texture{ "assets/sprite/ghost-idle.png" });
-    spriteAnime->setParent(this);
-    spriteAnime->scaleSize(2.0f);
-    addChild(spriteAnime);
+    SpriteAnime::addSpriteAnimeChild(this, "assets/sprite/ghost-idle.png", 2.0f);
 }
 
 void Player::handleEvents(SDL_Event& event)

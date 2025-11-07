@@ -1,5 +1,19 @@
 #include "sprite_anime.h"
 
+SpriteAnime* SpriteAnime::addSpriteAnimeChild(ObjectInScreen* parent,
+                                              std::string_view filePath,
+                                              float scale)
+{
+    auto spriteAnime{ new SpriteAnime };
+    spriteAnime->init();
+    spriteAnime->setTexture(Texture{ filePath });
+    spriteAnime->setParent(parent);
+    spriteAnime->scaleSize(scale);
+
+    parent->addChild(spriteAnime);
+    return spriteAnime;
+}
+
 void SpriteAnime::update(float deltaTime)
 {
     m_frameTimer += deltaTime;
