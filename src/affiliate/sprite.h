@@ -18,13 +18,17 @@ struct Texture
 class Sprite : public ObjectAffiliated
 {
 public:
-    Sprite() = default;
+    static Sprite* addSpriteChild(ObjectInScreen* parent,
+                                  std::string_view filePath,
+                                  float scale = 1.0f);
 
     virtual void init() override {};
     virtual void render() override;
 
+    void scaleSize(float scale) { m_size *= scale; }
+
     Texture texture() const { return m_texture; }
-    void setTexture(const Texture& texture);
+    virtual void setTexture(const Texture& texture);
 
 protected:
     Texture m_texture;
