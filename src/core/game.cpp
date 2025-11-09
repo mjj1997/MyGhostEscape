@@ -147,9 +147,9 @@ void Game::renderTexture(const Texture& texture, const glm::vec2& position, cons
                              texture.texture,
                              &texture.srcRect,
                              &dstRect,
-                             texture.angle,
+                             texture.m_angle,
                              nullptr,
-                             texture.isFlipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+                             texture.m_isFlipped ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 }
 
 void Game::drawGrid(const glm::vec2& topLeft,
