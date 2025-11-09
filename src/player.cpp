@@ -74,24 +74,29 @@ void Player::checkState()
         m_spriteIdle->setFlipped(false);
     }
 
-    bool isMoving{ glm::length(m_velocity) > 0.1f };
-    if (isMoving != m_isMoving) {
-        m_isMoving = isMoving;
-        changeState(m_isMoving);
+    State state{ glm::length(m_velocity) > 0.1f ? State::Moving : State::Idle };
+    if (state != m_curentState) {
+        m_curentState = state;
+        changeState(m_curentState);
     }
 }
 
-void Player::changeState(bool isMoving)
+void Player::changeState(State state)
 {
-    if (isMoving) {
-        m_spriteIdle->setActive(false);
-        m_spriteMove->setActive(true);
-        m_spriteMove->setCurrentFrame(m_spriteIdle->currentFrame());
-        m_spriteMove->setFrameTimer(m_spriteIdle->frameTimer());
-    } else {
+    switch (state) {
+    case State::Idle:
         m_spriteIdle->setActive(true);
         m_spriteMove->setActive(false);
         m_spriteIdle->setCurrentFrame(m_spriteMove->currentFrame());
         m_spriteIdle->setFrameTimer(m_spriteMove->frameTimer());
+        break;
+    case State::Moving:
+        m_spriteIdle->setActive(false);
+        m_spriteMove->setActive(true);
+        m_spriteMove->setCurrentFrame(m_spriteIdle->currentFrame());
+        m_spriteMove->setFrameTimer(m_spriteIdle->frameTimer());
+        break;
+    default:
+        break;
     }
 }
