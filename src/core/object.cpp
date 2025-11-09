@@ -2,7 +2,7 @@
 
 void Object::handleEvents(SDL_Event& event)
 {
-    for (const auto& child : m_children) {
+    for (auto& child : m_children) {
         if (child->isActive())
             child->handleEvents(event);
     }
@@ -10,7 +10,7 @@ void Object::handleEvents(SDL_Event& event)
 
 void Object::update(float deltaTime)
 {
-    for (const auto& child : m_children) {
+    for (auto& child : m_children) {
         if (child->isActive())
             child->update(deltaTime);
     }
@@ -18,7 +18,7 @@ void Object::update(float deltaTime)
 
 void Object::render()
 {
-    for (const auto& child : m_children) {
+    for (auto& child : m_children) {
         if (child->isActive())
             child->render();
     }
@@ -26,7 +26,7 @@ void Object::render()
 
 void Object::clean()
 {
-    for (const auto& child : m_children) {
+    for (auto& child : m_children) {
         child->clean();
         delete child;
     }
