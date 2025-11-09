@@ -4,46 +4,58 @@ void Scene::handleEvents(SDL_Event& event)
 {
     Object::handleEvents(event);
 
-    for (const auto& child : m_childrenInScreen)
-        child->handleEvents(event);
+    for (auto& child : m_childrenInScreen) {
+        if (child->isActive())
+            child->handleEvents(event);
+    }
 
-    for (const auto& child : m_childrenInWorld)
-        child->handleEvents(event);
+    for (auto& child : m_childrenInWorld) {
+        if (child->isActive())
+            child->handleEvents(event);
+    }
 }
 
 void Scene::update(float deltaTime)
 {
     Object::update(deltaTime);
 
-    for (const auto& child : m_childrenInWorld)
-        child->update(deltaTime);
+    for (auto& child : m_childrenInWorld) {
+        if (child->isActive())
+            child->update(deltaTime);
+    }
 
-    for (const auto& child : m_childrenInScreen)
-        child->update(deltaTime);
+    for (auto& child : m_childrenInScreen) {
+        if (child->isActive())
+            child->update(deltaTime);
+    }
 }
 
 void Scene::render()
 {
     Object::render();
 
-    for (const auto& child : m_childrenInWorld)
-        child->render();
+    for (auto& child : m_childrenInWorld) {
+        if (child->isActive())
+            child->render();
+    }
 
-    for (const auto& child : m_childrenInScreen)
-        child->render();
+    for (auto& child : m_childrenInScreen) {
+        if (child->isActive())
+            child->render();
+    }
 }
 
 void Scene::clean()
 {
     Object::clean();
 
-    for (const auto& child : m_childrenInScreen) {
+    for (auto& child : m_childrenInScreen) {
         child->clean();
         delete child;
     }
     m_childrenInScreen.clear();
 
-    for (const auto& child : m_childrenInWorld) {
+    for (auto& child : m_childrenInWorld) {
         child->clean();
         delete child;
     }

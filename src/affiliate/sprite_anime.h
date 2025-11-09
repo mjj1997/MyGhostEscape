@@ -15,10 +15,15 @@ public:
 
     int currentFrame() const { return m_currentFrame; }
     void setCurrentFrame(int frame) { m_currentFrame = frame; }
+
     int totalFrames() const { return m_totalFrames; }
     void setTotalFrames(int frames) { m_totalFrames = frames; }
+
     int fps() const { return m_fps; }
     void setFps(int fps) { m_fps = fps; }
+
+    float frameTimer() const { return m_frameTimer; }
+    void setFrameTimer(float frameTimer) { m_frameTimer = frameTimer; }
 
 private:
     int m_currentFrame{ 0 };

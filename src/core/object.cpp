@@ -2,28 +2,31 @@
 
 void Object::handleEvents(SDL_Event& event)
 {
-    for (const auto& child : m_children) {
-        child->handleEvents(event);
+    for (auto& child : m_children) {
+        if (child->isActive())
+            child->handleEvents(event);
     }
 }
 
 void Object::update(float deltaTime)
 {
-    for (const auto& child : m_children) {
-        child->update(deltaTime);
+    for (auto& child : m_children) {
+        if (child->isActive())
+            child->update(deltaTime);
     }
 }
 
 void Object::render()
 {
-    for (const auto& child : m_children) {
-        child->render();
+    for (auto& child : m_children) {
+        if (child->isActive())
+            child->render();
     }
 }
 
 void Object::clean()
 {
-    for (const auto& child : m_children) {
+    for (auto& child : m_children) {
         child->clean();
         delete child;
     }

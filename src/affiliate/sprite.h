@@ -30,6 +30,12 @@ public:
     Texture texture() const { return m_texture; }
     virtual void setTexture(const Texture& texture);
 
+    float angle() const { return m_texture.angle; }
+    void setAngle(float angle) { m_texture.angle = angle; }
+
+    bool isFlipped() const { return m_texture.isFlipped; }
+    void setFlipped(bool isFlipped) { m_texture.isFlipped = isFlipped; }
+
 protected:
     Texture m_texture;
 };
