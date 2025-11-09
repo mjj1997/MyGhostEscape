@@ -3,21 +3,24 @@
 void Object::handleEvents(SDL_Event& event)
 {
     for (const auto& child : m_children) {
-        child->handleEvents(event);
+        if (child->isActive())
+            child->handleEvents(event);
     }
 }
 
 void Object::update(float deltaTime)
 {
     for (const auto& child : m_children) {
-        child->update(deltaTime);
+        if (child->isActive())
+            child->update(deltaTime);
     }
 }
 
 void Object::render()
 {
     for (const auto& child : m_children) {
-        child->render();
+        if (child->isActive())
+            child->render();
     }
 }
 

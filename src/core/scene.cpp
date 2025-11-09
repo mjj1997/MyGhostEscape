@@ -5,10 +5,12 @@ void Scene::handleEvents(SDL_Event& event)
     Object::handleEvents(event);
 
     for (const auto& child : m_childrenInScreen)
-        child->handleEvents(event);
+        if (child->isActive())
+            child->handleEvents(event);
 
     for (const auto& child : m_childrenInWorld)
-        child->handleEvents(event);
+        if (child->isActive())
+            child->handleEvents(event);
 }
 
 void Scene::update(float deltaTime)
@@ -16,10 +18,12 @@ void Scene::update(float deltaTime)
     Object::update(deltaTime);
 
     for (const auto& child : m_childrenInWorld)
-        child->update(deltaTime);
+        if (child->isActive())
+            child->update(deltaTime);
 
     for (const auto& child : m_childrenInScreen)
-        child->update(deltaTime);
+        if (child->isActive())
+            child->update(deltaTime);
 }
 
 void Scene::render()
@@ -27,10 +31,12 @@ void Scene::render()
     Object::render();
 
     for (const auto& child : m_childrenInWorld)
-        child->render();
+        if (child->isActive())
+            child->render();
 
     for (const auto& child : m_childrenInScreen)
-        child->render();
+        if (child->isActive())
+            child->render();
 }
 
 void Scene::clean()
