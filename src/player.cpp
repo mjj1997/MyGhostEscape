@@ -67,11 +67,11 @@ void Player::syncCamera()
 void Player::checkState()
 {
     if (m_velocity.x < 0) {
-        m_spriteMove->texture().setFlipped(true);
-        m_spriteIdle->texture().setFlipped(true);
+        m_spriteMove->setFlipped(true);
+        m_spriteIdle->setFlipped(true);
     } else {
-        m_spriteMove->texture().setFlipped(false);
-        m_spriteIdle->texture().setFlipped(false);
+        m_spriteMove->setFlipped(false);
+        m_spriteIdle->setFlipped(false);
     }
 
     bool isMoving{ glm::length(m_velocity) > 0.1f };

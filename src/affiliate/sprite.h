@@ -9,16 +9,10 @@ struct Texture
     Texture() = default;
     explicit Texture(std::string_view filePath);
 
-    float angle() const { return m_angle; }
-    void setAngle(float angle) { m_angle = angle; }
-
-    bool isFlipped() const { return m_isFlipped; }
-    void setFlipped(bool isFlipped) { m_isFlipped = isFlipped; }
-
     SDL_Texture* texture{ nullptr };
     SDL_FRect srcRect{ 0.0f, 0.0f, 0.0f, 0.0f };
-    float m_angle{ 0.0f };
-    bool m_isFlipped{ false };
+    float angle{ 0.0f };
+    bool isFlipped{ false };
 };
 
 class Sprite : public ObjectAffiliated
@@ -35,6 +29,12 @@ public:
 
     Texture texture() const { return m_texture; }
     virtual void setTexture(const Texture& texture);
+
+    float angle() const { return m_texture.angle; }
+    void setAngle(float angle) { m_texture.angle = angle; }
+
+    bool isFlipped() const { return m_texture.isFlipped; }
+    void setFlipped(bool isFlipped) { m_texture.isFlipped = isFlipped; }
 
 protected:
     Texture m_texture;
