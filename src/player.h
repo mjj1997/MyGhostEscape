@@ -17,8 +17,10 @@ public:
     void move(float deltaTime);
     void syncCamera();
     void checkState();
+    void changeState(bool isMoving);
 
 private:
     SpriteAnime* m_spriteIdle{ nullptr };
     SpriteAnime* m_spriteMove{ nullptr };
+    bool m_isMoving{ false };
 };

@@ -75,12 +75,23 @@ void Player::checkState()
     }
 
     bool isMoving{ glm::length(m_velocity) > 0.1f };
-    if (isMoving) {
-        m_spriteIdle->setActive(false);
-        m_spriteMove->setActive(true);
-    } else {
-        m_spriteIdle->setActive(true);
-        m_spriteMove->setActive(false);
+    if (isMoving != m_isMoving) {
+        m_isMoving = isMoving;
+        changeState(m_isMoving);
     }
 }
 
+void Player::changeState(bool isMoving)
+{
+    if (isMoving) {
+        m_spriteIdle->setActive(false);
+        m_spriteMove->setActive(true);
+        m_spriteMove->setCurrentFrame(m_spriteIdle->currentFrame());
+        m_spriteMove->setFrameTimer(m_spriteIdle->frameTimer());
+    } else {
+        m_spriteIdle->setActive(true);
+        m_spriteMove->setActive(false);
+        m_spriteIdle->setCurrentFrame(m_spriteMove->currentFrame());
+        m_spriteIdle->setFrameTimer(m_spriteMove->frameTimer());
+    }
+}
