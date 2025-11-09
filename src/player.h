@@ -2,6 +2,8 @@
 
 #include "core/actor.h"
 
+class SpriteAnime;
+
 class Player : public Actor
 {
 public:
@@ -14,4 +16,8 @@ public:
     void keyboardControl();
     void move(float deltaTime);
     void syncCamera();
+
+private:
+    SpriteAnime* m_spriteIdle{ nullptr };
+    SpriteAnime* m_spriteMove{ nullptr };
 };

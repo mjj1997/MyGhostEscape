@@ -7,8 +7,9 @@ void Player::init()
     Actor::init();
 
     setMaxSpeed(500.0f);
-
-    SpriteAnime::addSpriteAnimeChild(this, "assets/sprite/ghost-idle.png", 2.0f);
+    m_spriteIdle = SpriteAnime::addSpriteAnimeChild(this, "assets/sprite/ghost-idle.png", 2.0f);
+    m_spriteMove = SpriteAnime::addSpriteAnimeChild(this, "assets/sprite/ghost-move.png", 2.0f);
+    m_spriteMove->setActive(false);
 }
 
 void Player::handleEvents(SDL_Event& event)
