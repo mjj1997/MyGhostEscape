@@ -21,6 +21,7 @@ void Player::update(float deltaTime)
 {
     Actor::update(deltaTime);
     keyboardControl();
+    checkState();
     move(deltaTime);
     syncCamera();
 }
@@ -62,3 +63,24 @@ void Player::syncCamera()
 {
     m_game.currentScene()->setCameraPosition(m_worldPosition - m_game.screenSize() / 2.0f);
 }
+
+void Player::checkState()
+{
+    if (m_velocity.x < 0) {
+        m_spriteMove->texture().setFlipped(true);
+        m_spriteIdle->texture().setFlipped(true);
+    } else {
+        m_spriteMove->texture().setFlipped(false);
+        m_spriteIdle->texture().setFlipped(false);
+    }
+
+    bool isMoving{ glm::length(m_velocity) > 0.1f };
+    if (isMoving) {
+        m_spriteIdle->setActive(false);
+        m_spriteMove->setActive(true);
+    } else {
+        m_spriteIdle->setActive(true);
+        m_spriteMove->setActive(false);
+    }
+}
+

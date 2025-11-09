@@ -16,6 +16,7 @@ public:
     void keyboardControl();
     void move(float deltaTime);
     void syncCamera();
+    void checkState();
 
 private:
     SpriteAnime* m_spriteIdle{ nullptr };
