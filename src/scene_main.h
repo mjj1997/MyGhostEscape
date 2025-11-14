@@ -3,6 +3,7 @@
 #include "core/scene.h"
 
 class Player;
+class Enemy;
 
 class SceneMain : public Scene
 {
@@ -20,4 +21,5 @@ private:
     void renderBackground();
 
     Player* m_player{ nullptr };
+    Enemy* m_enemy{ nullptr };
 };

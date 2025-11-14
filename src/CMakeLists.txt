@@ -13,6 +13,7 @@ target_sources(
           affiliate/sprite.cpp
           affiliate/sprite_anime.cpp
           core/actor.cpp
+          enemy.cpp)
 
 target_link_libraries(
   GhostEscape
