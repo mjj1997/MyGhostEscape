@@ -5,6 +5,8 @@
 class Actor : public ObjectInWorld
 {
 public:
+    void move(float deltaTime);
+
     glm::vec2 velocity() const { return m_velocity; };
     void setVelocity(const glm::vec2& velocity) { m_velocity = velocity; };
 
