@@ -5,7 +5,14 @@
 void Enemy::init()
 {
     Actor::init();
-    SpriteAnime::addSpriteAnimeChild(this, "assets/sprite/ghost-Sheet.png", 2.0f);
+
+    m_spriteNormal = SpriteAnime::addSpriteAnimeChild(this, "assets/sprite/ghost-Sheet.png", 2.0f);
+    m_spriteHurt = SpriteAnime::addSpriteAnimeChild(this, "assets/sprite/ghostHurt-Sheet.png", 2.0f);
+    m_spriteDie = SpriteAnime::addSpriteAnimeChild(this, "assets/sprite/ghostDead-Sheet.png", 2.0f);
+    m_spriteHurt->setActive(false);
+    m_spriteDie->setActive(false);
+
+    m_currentAnime = m_spriteNormal;
 }
 
 void Enemy::handleEvents(SDL_Event& event)
@@ -38,4 +45,31 @@ void Enemy::aimTarget(Player* target)
     auto direction{ target->worldPosition() - this->worldPosition() };
     direction = glm::normalize(direction);
     m_velocity = direction * m_maxSpeed;
+}
+
+void Enemy::checkState() {}
+
+void Enemy::changeState(State state)
+{
+    if (m_currentState == state)
+        return;
+
+    m_currentAnime->setActive(false);
+    switch (state) {
+    case State::Normal:
+        m_currentAnime = m_spriteNormal;
+        m_currentAnime->setActive(true);
+        break;
+    case State::Hurt:
+        m_currentAnime = m_spriteHurt;
+        m_currentAnime->setActive(true);
+        break;
+    case State::Die:
+        m_currentAnime = m_spriteDie;
+        m_currentAnime->setActive(true);
+        break;
+    default:
+        break;
+    }
+    m_currentState = state;
 }
