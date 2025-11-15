@@ -25,6 +25,13 @@ void Enemy::update(float deltaTime)
     Actor::update(deltaTime);
     aimTarget(m_target);
     move(deltaTime);
+
+    m_timer += deltaTime;
+    if (m_timer > 2.0f && m_timer < 4.0f) {
+        changeState(State::Hurt);
+    } else if (m_timer > 4.0f) {
+        changeState(State::Die);
+    }
 }
 
 void Enemy::render()
