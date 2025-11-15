@@ -29,10 +29,14 @@ public:
     bool isActive() const { return m_isActive; }
     void setActive(bool isActive) { m_isActive = isActive; }
 
+    bool isNeedRemoved() const { return m_isNeedRemoved; }
+    void setNeedRemoved(bool isNeedRemoved) { m_isNeedRemoved = isNeedRemoved; }
+
 protected:
     Game& m_game{ Game::instance() };
     ObjectType m_type{ ObjectType::None };
     bool m_isActive{ true };
+    bool m_isNeedRemoved{ false };
 
     std::vector<Object*> m_children;
 };
