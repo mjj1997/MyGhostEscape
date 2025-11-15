@@ -19,14 +19,30 @@ void Scene::update(float deltaTime)
 {
     Object::update(deltaTime);
 
-    for (auto& child : m_childrenInWorld) {
-        if (child->isActive())
-            child->update(deltaTime);
+    for (auto it{ m_childrenInWorld.begin() }; it != m_childrenInWorld.end();) {
+        auto child{ *it };
+        if (child->isNeedRemoved()) {
+            it = m_childrenInWorld.erase(it);
+            child->clean();
+            delete child;
+        } else {
+            if (child->isActive())
+                child->update(deltaTime);
+            ++it;
+        }
     }
 
-    for (auto& child : m_childrenInScreen) {
-        if (child->isActive())
-            child->update(deltaTime);
+    for (auto it{ m_childrenInScreen.begin() }; it != m_childrenInScreen.end();) {
+        auto child{ *it };
+        if (child->isNeedRemoved()) {
+            it = m_childrenInScreen.erase(it);
+            child->clean();
+            delete child;
+        } else {
+            if (child->isActive())
+                child->update(deltaTime);
+            ++it;
+        }
     }
 }
 

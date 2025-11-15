@@ -10,9 +10,17 @@ void Object::handleEvents(SDL_Event& event)
 
 void Object::update(float deltaTime)
 {
-    for (auto& child : m_children) {
-        if (child->isActive())
-            child->update(deltaTime);
+    for (auto it{ m_children.begin() }; it != m_children.end();) {
+        auto child{ *it };
+        if (child->isNeedRemoved()) {
+            it = m_children.erase(it);
+            child->clean();
+            delete child;
+        } else {
+            if (child->isActive())
+                child->update(deltaTime);
+            ++it;
+        }
     }
 }
 
