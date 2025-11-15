@@ -19,6 +19,7 @@ public:
     void aimTarget(Player* target);
     void checkState();
     void changeState(State state);
+    void removeAfterDie();
 
     Player* target() { return m_target; }
     void setTarget(Player* target) { m_target = target; }

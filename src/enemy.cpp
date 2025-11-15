@@ -11,6 +11,7 @@ void Enemy::init()
     m_spriteDie = SpriteAnime::addSpriteAnimeChild(this, "assets/sprite/ghostDead-Sheet.png", 2.0f);
     m_spriteHurt->setActive(false);
     m_spriteDie->setActive(false);
+    m_spriteDie->setLoop(false);
 
     m_currentAnime = m_spriteNormal;
 }
@@ -32,6 +33,7 @@ void Enemy::update(float deltaTime)
     } else if (m_timer > 4.0f) {
         changeState(State::Die);
     }
+    removeAfterDie();
 }
 
 void Enemy::render()
@@ -79,4 +81,10 @@ void Enemy::changeState(State state)
         break;
     }
     m_currentState = state;
+}
+
+void Enemy::removeAfterDie()
+{
+    if (m_spriteDie->isFinished())
+        setNeedRemoved(true);
 }
