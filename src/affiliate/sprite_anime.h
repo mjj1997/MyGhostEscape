@@ -25,9 +25,14 @@ public:
     float frameTimer() const { return m_frameTimer; }
     void setFrameTimer(float frameTimer) { m_frameTimer = frameTimer; }
 
+    bool isLoop() const { return m_isLoop; }
+    void setLoop(bool isLoop) { m_isLoop = isLoop; }
+
 private:
     int m_currentFrame{ 0 };
     int m_totalFrames{ 0 };
     int m_fps{ 10 };
     float m_frameTimer{ 0.0f };
+
+    bool m_isLoop{ true };
 };
