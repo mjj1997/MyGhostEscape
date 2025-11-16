@@ -1,4 +1,5 @@
 #include "enemy.h"
+#include "affiliate/collision_detector.h"
 #include "affiliate/sprite_anime.h"
 #include "player.h"
 
@@ -14,6 +15,7 @@ void Enemy::init()
     m_spriteDie->setLoop(false);
 
     m_currentAnime = m_spriteNormal;
+    m_collisionDetector = CollisionDetector::addCollisionDetectorChild(this, m_currentAnime->size());
 }
 
 void Enemy::handleEvents(SDL_Event& event)
@@ -34,6 +36,7 @@ void Enemy::update(float deltaTime)
         changeState(State::Die);
     }
     removeAfterDie();
+    attack();
 }
 
 void Enemy::render()
@@ -87,4 +90,15 @@ void Enemy::removeAfterDie()
 {
     if (m_spriteDie->isFinished())
         setNeedRemoved(true);
+}
+
+void Enemy::attack()
+{
+    if (!m_collisionDetector || m_target->collisionDetector() == nullptr)
+        return;
+
+    if (m_collisionDetector->isColliding(m_target->collisionDetector())) {
+        // TODO: 敌人攻击玩家
+        SDL_Log("敌人攻击玩家");
+    }
 }
