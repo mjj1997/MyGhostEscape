@@ -15,6 +15,16 @@ CollisionDetector* CollisionDetector::addCollisionDetectorChild(ObjectInScreen* 
     return detector;
 }
 
+void CollisionDetector::render()
+{
+#ifdef DEBUG_MODE
+    ObjectAffiliated::render();
+
+    auto pos{ m_parent->screenPosition() + m_offset };
+    m_game.renderFillCircle(pos, m_size, 0.3f);
+#endif // DEBUG_MODE
+}
+
 bool CollisionDetector::isColliding(CollisionDetector* other) const
 {
     if (m_shape == Shape::Circle && other->shape() == Shape::Circle) {

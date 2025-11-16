@@ -15,6 +15,7 @@ public:
                                                         Shape shape = Shape::Circle);
 
     void init() override {};
+    void render() override;
 
     bool isColliding(CollisionDetector* other) const;
 
