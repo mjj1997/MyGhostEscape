@@ -1,4 +1,5 @@
 #include "enemy.h"
+#include "affiliate/collision_detector.h"
 #include "affiliate/sprite_anime.h"
 #include "player.h"
 
@@ -14,6 +15,7 @@ void Enemy::init()
     m_spriteDie->setLoop(false);
 
     m_currentAnime = m_spriteNormal;
+    m_collisionDetector = CollisionDetector::addCollisionDetectorChild(this, m_currentAnime->size());
 }
 
 void Enemy::handleEvents(SDL_Event& event)

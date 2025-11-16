@@ -1,4 +1,5 @@
 #include "player.h"
+#include "affiliate/collision_detector.h"
 #include "affiliate/sprite_anime.h"
 #include "core/scene.h"
 
@@ -10,6 +11,8 @@ void Player::init()
     m_spriteIdle = SpriteAnime::addSpriteAnimeChild(this, "assets/sprite/ghost-idle.png", 2.0f);
     m_spriteMove = SpriteAnime::addSpriteAnimeChild(this, "assets/sprite/ghost-move.png", 2.0f);
     m_spriteMove->setActive(false);
+
+    m_collisionDetector = CollisionDetector::addCollisionDetectorChild(this, m_spriteIdle->size());
 }
 
 void Player::handleEvents(SDL_Event& event)
