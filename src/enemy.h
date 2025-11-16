@@ -20,6 +20,7 @@ public:
     void checkState();
     void changeState(State state);
     void removeAfterDie();
+    void attack();
 
     Player* target() { return m_target; }
     void setTarget(Player* target) { m_target = target; }

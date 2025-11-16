@@ -36,6 +36,7 @@ void Enemy::update(float deltaTime)
         changeState(State::Die);
     }
     removeAfterDie();
+    attack();
 }
 
 void Enemy::render()
@@ -89,4 +90,15 @@ void Enemy::removeAfterDie()
 {
     if (m_spriteDie->isFinished())
         setNeedRemoved(true);
+}
+
+void Enemy::attack()
+{
+    if (!m_collisionDetector || m_target->collisionDetector() == nullptr)
+        return;
+
+    if (m_collisionDetector->isColliding(m_target->collisionDetector())) {
+        // TODO: 敌人攻击玩家
+        SDL_Log("敌人攻击玩家");
+    }
 }
