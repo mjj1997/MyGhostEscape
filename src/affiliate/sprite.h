@@ -36,6 +36,10 @@ public:
     bool isFlipped() const { return m_texture.isFlipped; }
     void setFlipped(bool isFlipped) { m_texture.isFlipped = isFlipped; }
 
+    bool isFinished() const { return m_isFinished; }
+    void setFinished(bool isFinished) { m_isFinished = isFinished; }
+
 protected:
     Texture m_texture;
+    bool m_isFinished{ false };
 };

@@ -16,7 +16,6 @@ public:
     void clean() override;
 
     void keyboardControl();
-    void move(float deltaTime);
     void syncCamera();
     void checkState();
     void changeState(State state);

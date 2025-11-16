@@ -1,4 +1,5 @@
 #include "scene_main.h"
+#include "enemy.h"
 #include "player.h"
 
 void SceneMain::init()
@@ -10,6 +11,12 @@ void SceneMain::init()
     m_player->init();
     m_player->setWorldPosition(m_worldSize / 2.0f);
     addChild(m_player);
+
+    m_enemy = new Enemy;
+    m_enemy->init();
+    m_enemy->setTarget(m_player);
+    m_enemy->setWorldPosition(m_worldSize / 2.0f + glm::vec2{ 100.0f });
+    addChild(m_enemy);
 }
 
 void SceneMain::handleEvents(SDL_Event& event)

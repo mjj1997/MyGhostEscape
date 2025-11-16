@@ -51,14 +51,6 @@ void Player::keyboardControl()
         m_velocity.x = m_maxSpeed;
 }
 
-void Player::move(float deltaTime)
-{
-    setWorldPosition(m_worldPosition + m_velocity * deltaTime);
-    m_worldPosition = glm::clamp(m_worldPosition,
-                                 glm::vec2{ 0.0f },
-                                 m_game.currentScene()->worldSize());
-}
-
 void Player::syncCamera()
 {
     m_game.currentScene()->setCameraPosition(m_worldPosition - m_game.screenSize() / 2.0f);

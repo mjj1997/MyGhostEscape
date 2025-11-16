@@ -11,7 +11,9 @@ target_sources(
           core/asset_storage.cpp
           core/object.cpp
           affiliate/sprite.cpp
-          affiliate/sprite_anime.cpp)
+          affiliate/sprite_anime.cpp
+          core/actor.cpp
+          enemy.cpp)
 
 target_link_libraries(
   GhostEscape

@@ -16,11 +16,16 @@ SpriteAnime* SpriteAnime::addSpriteAnimeChild(ObjectInScreen* parent,
 
 void SpriteAnime::update(float deltaTime)
 {
+    if (m_isFinished)
+        return;
+
     m_frameTimer += deltaTime;
     if (m_frameTimer >= 1.0f / m_fps) {
         ++m_currentFrame;
         if (m_currentFrame >= m_totalFrames) {
             m_currentFrame = 0;
+            if (!m_isLoop)
+                m_isFinished = true;
         }
         m_frameTimer = 0.0f;
     }

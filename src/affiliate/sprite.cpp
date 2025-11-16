@@ -20,10 +20,7 @@ Sprite* Sprite::addSpriteChild(ObjectInScreen* parent, std::string_view filePath
 
 void Sprite::render()
 {
-    if (m_texture.texture == nullptr)
-        return;
-
-    if (m_parent == nullptr)
+    if (!m_texture.texture || !m_parent || m_isFinished)
         return;
 
     auto pos{ m_parent->screenPosition() + m_offset };
