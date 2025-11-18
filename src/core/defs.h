@@ -7,3 +7,16 @@ enum class ObjectType {
     Screen,
     World,
 };
+
+enum class Anchor {
+    None,
+    TopLeft,
+    TopCenter,
+    TopRight,
+    CenterLeft,
+    Center,
+    CenterRight,
+    BottomLeft,
+    BottomCenter,
+    BottomRight,
+};
