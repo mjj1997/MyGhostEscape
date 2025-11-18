@@ -5,6 +5,7 @@
 class ObjectAffiliated : public Object
 {
 public:
+    void setOffsetByAnchor(Anchor anchor);
     ObjectInScreen* parent() const { return m_parent; }
     void setParent(ObjectInScreen* parent) { m_parent = parent; }
     glm::vec2 offset() const { return m_offset; }
