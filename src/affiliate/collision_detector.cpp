@@ -2,13 +2,15 @@
 
 CollisionDetector* CollisionDetector::addCollisionDetectorChild(ObjectInScreen* parent,
                                                                 glm::vec2 size,
-                                                                Shape shape)
+                                                                Shape shape,
+                                                                Anchor anchor)
 {
     auto detector{ new CollisionDetector };
     detector->init();
     detector->setParent(parent);
     detector->setSize(size);
     detector->setShape(shape);
+    detector->setAnchor(anchor);
 
     parent->addChild(detector);
 
