@@ -7,7 +7,8 @@ class SpriteAnime : public Sprite
 public:
     static SpriteAnime* addSpriteAnimeChild(ObjectInScreen* parent,
                                             std::string_view filePath,
-                                            float scale = 1.0f);
+                                            float scale = 1.0f,
+                                            Anchor anchor = Anchor::Center);
 
     virtual void update(float deltaTime) override;
 

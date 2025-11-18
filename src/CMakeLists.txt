@@ -14,7 +14,8 @@ target_sources(
           affiliate/sprite_anime.cpp
           core/actor.cpp
           enemy.cpp
-          affiliate/collision_detector.cpp)
+          affiliate/collision_detector.cpp
+          core/object_affiliated.cpp)
 
 target_link_libraries(
   GhostEscape

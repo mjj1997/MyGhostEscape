@@ -35,5 +35,5 @@ private:
     SpriteAnime* m_spriteHurt{ nullptr };
     SpriteAnime* m_spriteDie{ nullptr };
 
-    float m_timer{ 0.0f };
+    // float m_timer{ 0.0f };
 };

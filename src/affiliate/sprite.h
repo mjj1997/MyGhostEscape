@@ -20,12 +20,11 @@ class Sprite : public ObjectAffiliated
 public:
     static Sprite* addSpriteChild(ObjectInScreen* parent,
                                   std::string_view filePath,
-                                  float scale = 1.0f);
+                                  float scale = 1.0f,
+                                  Anchor anchor = Anchor::Center);
 
     virtual void init() override {};
     virtual void render() override;
-
-    void scaleSize(float scale) { m_size *= scale; }
 
     Texture texture() const { return m_texture; }
     virtual void setTexture(const Texture& texture);

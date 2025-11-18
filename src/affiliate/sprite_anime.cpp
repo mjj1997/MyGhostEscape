@@ -2,13 +2,15 @@
 
 SpriteAnime* SpriteAnime::addSpriteAnimeChild(ObjectInScreen* parent,
                                               std::string_view filePath,
-                                              float scale)
+                                              float scale,
+                                              Anchor anchor)
 {
     auto spriteAnime{ new SpriteAnime };
     spriteAnime->init();
     spriteAnime->setTexture(Texture{ filePath });
     spriteAnime->setParent(parent);
     spriteAnime->scaleSize(scale);
+    spriteAnime->setAnchor(anchor);
 
     parent->addChild(spriteAnime);
     return spriteAnime;

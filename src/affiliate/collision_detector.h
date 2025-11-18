@@ -12,7 +12,8 @@ public:
 
     static CollisionDetector* addCollisionDetectorChild(ObjectInScreen* parent,
                                                         glm::vec2 size,
-                                                        Shape shape = Shape::Circle);
+                                                        Shape shape = Shape::Circle,
+                                                        Anchor anchor = Anchor::Center);
 
     void init() override {};
     void render() override;
