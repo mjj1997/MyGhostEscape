@@ -12,7 +12,8 @@ void Player::init()
     m_spriteMove = SpriteAnime::addSpriteAnimeChild(this, "assets/sprite/ghost-move.png", 2.0f);
     m_spriteMove->setActive(false);
 
-    m_collisionDetector = CollisionDetector::addCollisionDetectorChild(this, m_spriteIdle->size());
+    m_collisionDetector = CollisionDetector::addCollisionDetectorChild(this,
+                                                                       m_spriteIdle->size() / 2.0f);
 }
 
 void Player::handleEvents(SDL_Event& event)

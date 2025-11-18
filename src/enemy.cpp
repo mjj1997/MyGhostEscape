@@ -29,12 +29,12 @@ void Enemy::update(float deltaTime)
     aimTarget(m_target);
     move(deltaTime);
 
-    m_timer += deltaTime;
-    if (m_timer > 2.0f && m_timer < 4.0f) {
-        changeState(State::Hurt);
-    } else if (m_timer > 4.0f) {
-        changeState(State::Die);
-    }
+    // m_timer += deltaTime;
+    // if (m_timer > 2.0f && m_timer < 4.0f) {
+    //     changeState(State::Hurt);
+    // } else if (m_timer > 4.0f) {
+    //     changeState(State::Die);
+    // }
     removeAfterDie();
     attack();
 }
