@@ -36,3 +36,8 @@ void ObjectAffiliated::setOffsetByAnchor(Anchor anchor)
     }
 }
 
+void ObjectAffiliated::setSize(const glm::vec2& size)
+{
+    m_size = size;
+    setOffsetByAnchor(m_anchor);
+}

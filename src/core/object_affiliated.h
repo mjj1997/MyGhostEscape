@@ -8,10 +8,12 @@ public:
     void setOffsetByAnchor(Anchor anchor);
     ObjectInScreen* parent() const { return m_parent; }
     void setParent(ObjectInScreen* parent) { m_parent = parent; }
+
     glm::vec2 offset() const { return m_offset; }
     void setOffset(const glm::vec2& offset) { m_offset = offset; }
+
     glm::vec2 size() const { return m_size; }
-    void setSize(const glm::vec2& size) { m_size = size; }
+    void setSize(const glm::vec2& size);
 
     Anchor anchor() const { return m_anchor; }
     void setAnchor(Anchor anchor) { m_anchor = anchor; }
