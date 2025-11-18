@@ -6,6 +6,8 @@ class ObjectAffiliated : public Object
 {
 public:
     void setOffsetByAnchor(Anchor anchor);
+    void scaleSize(float scale);
+
     ObjectInScreen* parent() const { return m_parent; }
     void setParent(ObjectInScreen* parent) { m_parent = parent; }
 

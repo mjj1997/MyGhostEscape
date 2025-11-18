@@ -36,6 +36,12 @@ void ObjectAffiliated::setOffsetByAnchor(Anchor anchor)
     }
 }
 
+void ObjectAffiliated::scaleSize(float scale)
+{
+    m_size *= scale;
+    setOffsetByAnchor(m_anchor);
+}
+
 void ObjectAffiliated::setSize(const glm::vec2& size)
 {
     m_size = size;
